@@ -30,6 +30,9 @@ def filter():
         cursor = mysql.connection.cursor()
         cursor.execute("INSERT INTO request (id_fund_category, id_size_type, date) VALUES(%s,%s,%s)",(id_fund_category,id_size_type,datetime.now()))
         mysql.connection.commit() 
+        
+        # Close
+        cursor.close()
 
         return "Query saved"
 
@@ -41,6 +44,7 @@ def filter():
 
         # Fetch and close
         result = cursor.fetchall()
+        cursor.close()
        
         # Return
         return jsonify(result)
