@@ -26,9 +26,11 @@ currency
 
 Example for currency:
 
+```sql
 INSERT INTO currency (currency)
 SELECT DISTINCT(currency)
 FROM etfs_raw
+```
 
 ## 6. Load fund table
 Contains fk to the other tables and all other fields
@@ -37,24 +39,30 @@ Contains fk to the other tables and all other fields
 
 Example for currency
 
+```sql
 UPDATE fund as f
 	INNER JOIN etfs_raw as e ON e.fund_symbol=f.fund_symbol
 	INNER JOIN currency as c ON e.currency=c.currency
 SET f.currency = c.id_currency
+```
 
 ## 8. Fix some formats
 
-STR_TO_DATE(e.inception_date,'%d.%m.%Y')
-
 ## 9. Convert dates
+
+```sql
+STR_TO_DATE(e.inception_date,'%d.%m.%Y')
+```
 
 ## 10. Create view
 
+```sql
 CREATE VIEW esg_filter_funds AS
 	SELECT fund_symbol, fc.fund_category, st.size_type
 	FROM fund f
 		JOIN size_type st on st.id_size_type = f.size_type
 		JOIN fund_category fc on fc.id_fund_category = f.fund_category
+```
 
 
 ## Create flask api
