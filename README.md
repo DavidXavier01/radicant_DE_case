@@ -71,4 +71,4 @@ CREATE VIEW esg_filter_funds AS
 3. Make request
 
 ## Sample request
-curl "localhost:5000/filter_funds?id_fund_category=2&id_size_type=3" -H "Accept: application/json"
+curl "localhost:5000/filter_funds?id_fund_category=2&id_size_type=1" -X POST -H "Accept: application/json"

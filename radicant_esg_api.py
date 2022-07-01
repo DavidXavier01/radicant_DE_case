@@ -14,7 +14,7 @@ app.config['MYSQL_DB'] = 'etfs'
 mysql = MySQL(app)
 
 # %% 
-@app.route('/filter_funds', methods = ['GET'])
+@app.route('/filter_funds', methods = ['GET','POST'])
 def filter():
     # Request Params
     id_fund_category = request.args.get('id_fund_category')
@@ -24,12 +24,16 @@ def filter():
     if not id_fund_category or not id_fund_category:
         return "Fill the requested params"
     
-    if request.method == "GET":
+    if request.method == "POST":
 
          # MySQL conn
         cursor = mysql.connection.cursor()
         cursor.execute("INSERT INTO request (id_fund_category, id_size_type, date) VALUES(%s,%s,%s)",(id_fund_category,id_size_type,datetime.now()))
-        mysql.connection.commit()   
+        mysql.connection.commit() 
+
+        return "Query saved"
+
+    if request.method == "GET":
 
         # MySQL conn
         cursor = mysql.connection.cursor()
