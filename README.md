@@ -6,11 +6,13 @@
 
 ## 3. Import from data csv
 
+```sql
 LOAD DATA INFILE 'C:\\Users\\David Xavier\\Desktop\\radicant\\radicant_de_challenge\\radicant_de_challenge\\ETFs_original.csv'
 INTO TABLE etfs_raw
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
+```
 
 ## 4. Create tables with data types
 fund
