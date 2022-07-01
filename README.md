@@ -63,9 +63,12 @@ CREATE VIEW esg_filter_funds AS
 		JOIN size_type st on st.id_size_type = f.size_type
 		JOIN fund_category fc on fc.id_fund_category = f.fund_category
 ```
+## Create Flask API
 
+## To test?
+1. Run etfs.sql to MySQL engine
+2. Run radicant_esg_api
+3. Make request
 
-## Create flask api
-
-## Test
+## Sample request
 curl "localhost:5000/filter_funds?id_fund_category=2&id_size_type=3" -H "Accept: application/json"
